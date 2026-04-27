@@ -63,7 +63,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Misaf\\VendraActivityLog\\ActivityLogServiceProvider"
+        "Misaf\\VendraActivityLog\\Providers\\ActivityLogServiceProvider"
       ]
     }
   },

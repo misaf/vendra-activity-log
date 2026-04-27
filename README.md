@@ -11,8 +11,11 @@ Tenant-aware activity logging for Vendra applications.
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11 or 12
-- Filament 4
+- Laravel 12
+- Filament 5
+- Livewire 4
+- Pest 4
+- Tailwind CSS 4
 - `misaf/vendra-tenant`
 - `misaf/vendra-user`
 - `spatie/laravel-activitylog`

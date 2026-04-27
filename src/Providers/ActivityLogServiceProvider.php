@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Misaf\VendraActivityLog;
+namespace Misaf\VendraActivityLog\Providers;
 
 use Filament\Panel;
 use Illuminate\Foundation\Console\AboutCommand;
+use Misaf\VendraActivityLog\ActivityLogPlugin;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
