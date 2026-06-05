@@ -9,9 +9,11 @@ use Filament\Panel;
 
 final class ActivityLogPlugin implements Plugin
 {
+    public const string ID = 'vendra-activity-log';
+
     public function getId(): string
     {
-        return 'vendra-activity-log';
+        return self::ID;
     }
 
     public static function make(): static
