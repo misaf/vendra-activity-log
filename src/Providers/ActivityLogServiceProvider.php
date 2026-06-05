@@ -19,7 +19,7 @@ final class ActivityLogServiceProvider extends PackageServiceProvider
             ->name('vendra-activity-log')
             ->hasTranslations()
             ->hasMigrations([
-                'add_tenant_id_column_to_activity_log_table'
+                'add_tenant_id_column_to_activity_log_table',
             ])
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command->askToStarRepoOnGitHub('misaf/vendra-activity-log');
