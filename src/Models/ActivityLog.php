@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Misaf\VendraActivityLog\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Misaf\VendraTenant\Traits\BelongsToTenant;
 use Spatie\Activitylog\Models\Activity as SpatieActivityLog;
 
@@ -12,13 +13,10 @@ use Spatie\Activitylog\Models\Activity as SpatieActivityLog;
  *
  * @property int $tenant_id
  */
+#[Hidden(['tenant_id'])]
 final class ActivityLog extends SpatieActivityLog
 {
     use BelongsToTenant;
-
-    protected $hidden = [
-        'tenant_id',
-    ];
 
     protected function casts(): array
     {
