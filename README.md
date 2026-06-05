@@ -7,17 +7,20 @@ Tenant-aware activity logging for Vendra applications.
 - Tenant-scoped activity logs
 - Filament resource and widget on the `admin` panel
 - Translation and migration publishing support
+- Tenant-aware permission policy seeding
 
 ## Requirements
 
-- PHP 8.2+
-- Laravel 12
+- PHP 8.3+
+- Laravel 13
 - Filament 5
 - Livewire 4
 - Pest 4
 - Tailwind CSS 4
+- `awcodes/filament-badgeable-column`
 - `misaf/vendra-tenant`
 - `misaf/vendra-user`
+- `mokhosh/filament-jalali`
 - `spatie/laravel-activitylog`
 
 ## Installation
@@ -39,6 +42,20 @@ Optional translations publish:
 
 ```bash
 php artisan vendor:publish --tag=vendra-activity-log-translations
+```
+
+## Permissions
+
+Seed activity log permissions for a tenant by ID or slug:
+
+```bash
+php artisan vendra-activity-log:seed {tenant} permissions
+```
+
+To run every activity log seeder:
+
+```bash
+php artisan vendra-activity-log:seed {tenant} all
 ```
 
 ## Usage
