@@ -14,7 +14,7 @@ final class SeedCommand extends BaseSeedCommand
 
     protected $signature = self::MODULE_NAME . ':seed
         {tenant : Tenant ID or slug to seed activity log data for}
-        {seeders* : Seeder keys to run. Use "all" or one or more of: permissions}';
+        {seeders* : Seeder keys to run. Use "all" or one or more of: permission-policies}';
 
     protected $description = 'Seed activity log module data for a tenant';
 
@@ -24,7 +24,7 @@ final class SeedCommand extends BaseSeedCommand
     protected function seeders(): array
     {
         return [
-            'permissions' => PermissionPolicySeeder::class,
+            'permission-policies' => PermissionPolicySeeder::class,
         ];
     }
 }
