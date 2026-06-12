@@ -7,6 +7,7 @@ namespace Misaf\VendraActivityLog\Providers;
 use Filament\Panel;
 use Illuminate\Foundation\Console\AboutCommand;
 use Misaf\VendraActivityLog\ActivityLogPlugin;
+use Misaf\VendraActivityLog\Console\Commands\SeedCommand;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -21,6 +22,7 @@ final class ActivityLogServiceProvider extends PackageServiceProvider
             ->hasMigrations([
                 'add_tenant_id_column_to_activity_log_table',
             ])
+            ->hasCommands(SeedCommand::class)
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command->askToStarRepoOnGitHub('misaf/vendra-activity-log');
             });
