@@ -9,8 +9,6 @@ use Misaf\VendraTenant\Traits\BelongsToTenant;
 use Spatie\Activitylog\Models\Activity as SpatieActivityLog;
 
 /**
- * Misaf\VendraActivitylog\Models\ActivityLog.
- *
  * @property int $tenant_id
  */
 #[Hidden(['tenant_id'])]
