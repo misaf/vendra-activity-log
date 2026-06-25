@@ -6,9 +6,9 @@ namespace Misaf\VendraActivityLog\Console\Commands;
 
 use Misaf\VendraActivityLog\ActivityLogPlugin;
 use Misaf\VendraActivityLog\Database\Seeders\PermissionPolicySeeder;
-use Misaf\VendraSupport\Console\Commands\BaseSeedCommand;
+use Misaf\VendraTenant\Console\Commands\TenantSeedCommand;
 
-final class SeedCommand extends BaseSeedCommand
+final class SeedCommand extends TenantSeedCommand
 {
     protected const string MODULE_NAME = ActivityLogPlugin::ID;
 
