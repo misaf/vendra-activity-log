@@ -30,7 +30,7 @@
 		"illuminate/support": "^13.0",
 		"misaf/vendra-support": "dev-master",
 		"misaf/vendra-user": "dev-master",
-		"mokhosh/filament-jalali": "5.0",
+		"misaf/filament-jalali": "^5.1",
 		"spatie/laravel-activitylog": "^4.0",
 		"spatie/laravel-package-tools": "^1.0"
 	},
