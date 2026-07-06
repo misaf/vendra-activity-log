@@ -19,7 +19,6 @@ Tenant-aware activity logging for Vendra applications.
 - Tailwind CSS 4
 - `awcodes/filament-badgeable-column`
 - `misaf/vendra-tenant`
-- `misaf/vendra-user`
 - `mokhosh/filament-jalali`
 - `spatie/laravel-activitylog`
 
