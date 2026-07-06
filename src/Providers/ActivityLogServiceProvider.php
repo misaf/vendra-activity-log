@@ -6,8 +6,10 @@ namespace Misaf\VendraActivityLog\Providers;
 
 use Filament\Panel;
 use Illuminate\Foundation\Console\AboutCommand;
+use Illuminate\Support\Facades\Event;
 use Misaf\VendraActivityLog\ActivityLogPlugin;
 use Misaf\VendraActivityLog\Console\Commands\SeedCommand;
+use Misaf\VendraActivityLog\Listeners\LogModelActivity;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -42,5 +44,19 @@ final class ActivityLogServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         AboutCommand::add('Vendra Activity Log', fn() => ['Version' => 'dev-master']);
+
+        $this->registerActivityLogListeners();
+    }
+
+    /**
+     * Bind the activity logger to the wildcard Eloquent lifecycle events so any
+     * model implementing ShouldLogActivity is logged without depending on this
+     * package. Absence of this provider means no listeners and no logging.
+     */
+    private function registerActivityLogListeners(): void
+    {
+        foreach (['created', 'updated', 'deleted', 'restored'] as $event) {
+            Event::listen("eloquent.{$event}: *", LogModelActivity::class);
+        }
     }
 }
