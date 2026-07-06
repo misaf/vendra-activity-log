@@ -24,7 +24,7 @@ final class LogModelActivity
      *
      * @var list<string>
      */
-    private const DEFAULT_EXCEPT = ['id'];
+    private const array DEFAULT_EXCEPT = ['id'];
 
     /**
      * Handle a wildcard Eloquent model event (e.g. "eloquent.updated: App\Models\Foo").
