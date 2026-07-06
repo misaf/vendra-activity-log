@@ -16,7 +16,36 @@ abstract class TestCase extends OrchestraTestCase
     #[Override]
     protected function defineDatabaseMigrations(): void
     {
+        $this->runActivityLogPackageMigrations();
+
+        // Fixture-only table backing the test widget models.
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+    }
+
+    /**
+     * Build the real activity_log schema from the migrations the packages ship,
+     * rather than duplicating it here: the base table and its columns come from
+     * spatie/laravel-activitylog, and the tenant_id column comes from this
+     * module's own migration (a no-op unless a TenantResolver is bound).
+     */
+    private function runActivityLogPackageMigrations(): void
+    {
+        $spatiePath = __DIR__ . '/../vendor/spatie/laravel-activitylog/database/migrations';
+
+        /** @var array<string, class-string> $spatieMigrations */
+        $spatieMigrations = [
+            'create_activity_log_table'                   => 'CreateActivityLogTable',
+            'add_event_column_to_activity_log_table'      => 'AddEventColumnToActivityLogTable',
+            'add_batch_uuid_column_to_activity_log_table' => 'AddBatchUuidColumnToActivityLogTable',
+        ];
+
+        foreach ($spatieMigrations as $file => $class) {
+            include_once "{$spatiePath}/{$file}.php.stub";
+
+            (new $class())->up();
+        }
+
+        (include __DIR__ . '/../database/migrations/add_tenant_id_column_to_activity_log_table.php.stub')->up();
     }
 
     #[Override]
