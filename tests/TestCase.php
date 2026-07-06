@@ -6,6 +6,7 @@ namespace Misaf\VendraActivityLog\Tests;
 
 use Illuminate\Support\Facades\Http;
 use Misaf\VendraActivityLog\Providers\ActivityLogServiceProvider;
+use Misaf\VendraSupport\Providers\SupportServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Override;
 use Spatie\Activitylog\ActivitylogServiceProvider as SpatieActivitylogServiceProvider;
@@ -68,6 +69,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app): array
     {
         return [
+            SupportServiceProvider::class,
             SpatieActivitylogServiceProvider::class,
             ActivityLogServiceProvider::class,
         ];
