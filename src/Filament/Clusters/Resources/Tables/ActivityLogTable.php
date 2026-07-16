@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Misaf\VendraActivityLog\Filament\Resources\Tables;
+namespace Misaf\VendraActivityLog\Filament\Clusters\Resources\Tables;
 
 use Awcodes\BadgeableColumn\Components\Badge;
 use Awcodes\BadgeableColumn\Components\BadgeableColumn;

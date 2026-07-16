@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Misaf\VendraActivityLog\Filament\Resources\Pages;
+namespace Misaf\VendraActivityLog\Filament\Clusters\Resources\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use Misaf\VendraActivityLog\Filament\Resources\ActivityLogResource;
+use Misaf\VendraActivityLog\Filament\Clusters\Resources\ActivityLogResource;
 
 final class ListActivityLogs extends ListRecords
 {
