@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\QueryBuilder;
 use Filament\Tables\Filters\QueryBuilder\Constraints\DateConstraint;
+use Filament\Tables\Filters\QueryBuilder\Constraints\NumberConstraint;
 use Filament\Tables\Filters\QueryBuilder\Constraints\TextConstraint;
 use Filament\Tables\Table;
 use Illuminate\Support\Number;
@@ -32,7 +33,7 @@ final class ActivityLogTable
         $columns = [
             TextColumn::make('row')
                 ->label('#')
-                ->rowIndex(),
+                ->rowIndex()->sortable(),
 
             TextColumn::make('event')
                 ->alignStart()
@@ -76,7 +77,7 @@ final class ActivityLogTable
                 ->label(__('vendra-activity-log::tables.created_at'))
                 ->sinceTooltip()
                 ->toggleable(isToggledHiddenByDefault: true)
-                ->unless(
+                ->when(
                     app()->isLocale('fa'),
                     fn(TextColumn $column) => $column->jalaliDateTime('Y-m-d H:i', latinNumbers: true),
                     fn(TextColumn $column) => $column->dateTime('Y-m-d H:i')
@@ -89,7 +90,7 @@ final class ActivityLogTable
                 ->label(__('vendra-activity-log::tables.updated_at'))
                 ->sinceTooltip()
                 ->toggleable(isToggledHiddenByDefault: true)
-                ->unless(
+                ->when(
                     app()->isLocale('fa'),
                     fn(TextColumn $column) => $column->jalaliDateTime('Y-m-d H:i', latinNumbers: true),
                     fn(TextColumn $column) => $column->dateTime('Y-m-d H:i')
@@ -116,6 +117,12 @@ final class ActivityLogTable
 
                             TextConstraint::make('batch_uuid')
                                 ->label(__('vendra-activity-log::attributes.batch_uuid')),
+
+                            NumberConstraint::make('subject_id')
+                                ->label(__('vendra-activity-log::attributes.subject_id')),
+
+                            NumberConstraint::make('causer_id')
+                                ->label(__('vendra-activity-log::attributes.causer_id')),
 
                             DateConstraint::make('created_at')
                                 ->label(__('vendra-activity-log::attributes.created_at')),
